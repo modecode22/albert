@@ -72,7 +72,7 @@ func chatMode(client *openai.Client, reader *bufio.Reader, messages *[]openai.Ch
 		})
 
 		response, err := client.CreateChatCompletion(context.Background(), openai.ChatCompletionRequest{
-			Model:    openai.GPT3Dot5Turbo,
+			Model:    openai.GPT4,
 			Messages: *messages,
 			Stream:   false,
 			MaxTokens: 2048,
@@ -82,7 +82,7 @@ func chatMode(client *openai.Client, reader *bufio.Reader, messages *[]openai.Ch
 			continue
 		}
 
-		fmt.Printf("ChatGPT: %s\n", response.Choices[0].Message.Content)
+		fmt.Printf("Albert: %s\n", response.Choices[0].Message.Content)
 
 		*messages = append(*messages, openai.ChatCompletionMessage{
 			Role:    openai.ChatMessageRoleAssistant,
